@@ -31,14 +31,12 @@ Based on the UI analysis, the merchant follows a linear 5-step fulfillment proce
 ---
 
 ## 3. Critical Product Gaps
-*   **Address Validation**: Lack of automated sub-district (Kecamatan) verification leads to high RTO rates.
 *   **Package Presets**: No ability to save standard box sizes (e.g., "Small Box", "Large Mailer").
 *   **Contextual Red Zone Checks**: Warnings are siloed in a separate menu rather than integrated into the checkout flow.
-*   **Financial Flow**: COD value entry is requested at the summary stage instead of the input stage, leading to recalculations.
 
 ---
 
-## 4. Flow Friction Analysis (The "Big 5")
+## 4. Flow Friction Analysis
 
 ### 1. Manual Address Entry (Screen 5)
 For social sellers (WhatsApp/IG), re-typing addresses is the #1 time-sink.
@@ -52,14 +50,6 @@ Forcing merchants to enter 9x9x9 and weight for every single "Manual" order.
 Splitting pickup selection into two distinct click actions.
 *   **Impact**: Unnecessary clicks.
 
-### 4. Late-Stage Financial Input (Screen 11)
-Entering the COD value at the "Ringkasan" (Summary) stage.
-*   **Impact**: Confuses users about final pricing until the very end.
-
-### 5. Saldo Gatekeeping (Screen 12)
-Hard stop if balance is insufficient.
-*   **Impact**: High drop-off rate at the final step.
-
 ---
 
 ## 5. Strategic Recommendations
@@ -67,7 +57,7 @@ Hard stop if balance is insufficient.
 1.  **Smart Address Parser**: Allow merchants to paste raw text from WhatsApp/Instagram.
 2.  **Courier Success Rates**: Show "Success %" alongside price to help merchants avoid unreliable couriers.
 3.  **Bulk "One-Click" Approve**: Allow bulk approval of shipments using "Cheapest" or "Favorite" couriers.
-4.  **Integrated Top-up**: Add a "Top up & Confirm" button if Saldo is low.
+4.  **Dynamic Saldo Top-up**: While a top-up popup exists, moving toward a "Pay-as-you-go" credit card/E-wallet linkage would eliminate the "Saldo" step entirely.
 
 ---
 
