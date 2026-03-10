@@ -5,40 +5,82 @@
 **Date:** March 10, 2026
 
 ## Executive Summary
-The invoicing system is a critical component of the merchant's financial workflow. This analysis focuses on the transition from "order fulfillment" to "billing and reconciliation." For SaaS platforms, invoices are not just records—they are tools for cash flow management and professional branding for the merchant.
+FLIK Invoice Creator functions as a high-speed payment link generator, optimized for social commerce merchants (WhatsApp/Instagram sellers). While the flow is exceptionally linear and has low cognitive load, it currently functions more as a "link generator" than a "payment management system" due to gaps in status visibility and post-link automation.
 
 ---
 
-## 1. Projected Merchant Journey (Invoicing)
-Based on industry standards for merchant dashboards, the invoice journey typically follows:
-1.  **Generation**: Automated creation after a successful shipment or checkout.
-2.  **Notification**: Delivery of the invoice via email, WhatsApp, or SMS to the end-customer.
-3.  **Payment Tracking**: Monitoring the status (Unpaid, Paid, Overdue).
-4.  **Reconciliation**: Matching shipping costs, COD fees, and platform fees against the total invoice value.
+## 1. Reconstructed Merchant Journey
+Based on the UI analysis, the merchant follows a 3-step loop:
+
+1.  **Initiation**: Merchant accesses the Invoice dashboard and triggers "Buat Invoice."
+2.  **Configuration**: 
+    *   Optional naming of the cart for tracking.
+    *   Adding products (utilizing "Custom Product" for speed/flexibility).
+    *   Toggling "Customer Pilihan" to link to specific shoppers.
+3.  **Distribution**: The system generates a "Link Cart." The merchant copies the link ("Salin Link") to distribute via chat apps.
 
 ---
 
-## 2. Competitive UX Benchmarks
-To be "best-in-class," FLIK Invoice should be measured against:
-*   **Stripe Invoicing**: Excellence in automated reminders and "one-click" payment links.
-*   **Xero/QuickBooks**: Deep reconciliation features and tax compliance.
-*   **Shopify Invoices**: Seamless integration between the store front-end and the billing back-end.
+## 2. UX and Interface Evaluation
+| Metric | Rating | Observation |
+| :--- | :--- | :--- |
+| **Speed of Creation** | High | Modal-based custom product entry is very fast. |
+| **Usability** | High | Clear, single-purpose screens; minimal distraction. |
+| **Clarity** | Medium | Dashboard lacks status indicators; empty names ("-") hinder reconciliation. |
+| **Cognitive Load** | Low | Minimal fields required to generate a valid payment link. |
 
 ---
 
-## 3. Anticipated Product Gaps (Logistics-Specific)
-*   **Shipping & Tax Transparency**: Invoices must clearly separate "Item Price" from "Shipping Fee" and "COD Surcharges" to avoid customer disputes.
-*   **Dynamic Branding**: Merchants need the ability to upload their own logos and brand colors to maintain a professional look.
-*   **Multi-Channel Delivery**: In the Indonesian market, the ability to send invoices directly via WhatsApp is a high-priority requirement.
-*   **Bulk Download**: For D2C brands, the ability to download 500+ invoices as a single PDF or ZIP file for monthly accounting is essential.
+## 3. Critical Product Gaps
+*   **Payment Status Visibility**: The dashboard shows amounts but lacks "Paid/Unpaid/Expired" badges. Merchants cannot verify collection within this view.
+*   **Link Expiry Settings**: No ability to set a time-to-live (TTL) for links, risking overselling of limited inventory.
+*   **Customer Preview**: No way for the merchant to preview the customer's checkout experience before sending the link.
+*   **Reconciliation Silo**: The Invoice flow and Shipping flow appear disconnected; an invoice should ideally "auto-trigger" a shipping draft once paid.
 
 ---
 
-## 4. Strategic Recommendations
-1.  **Automated Reconciliation**: Link shipping AWB status directly to invoice status (e.g., mark as "Delivered" in the invoice view).
-2.  **Payment Link Integration**: Embed payment buttons directly in the PDF/Digital invoice for faster collection.
-3.  **Tax Compliance (e-Faktur)**: Preparation for local tax requirements to support larger corporate merchants.
+## 4. Flow Friction Analysis (The "Top 5")
+
+### 1. Anonymous Dashboard Entries
+Allowing the "Nama Order" to be optional results in a dashboard filled with "-" entries, making it impossible to search for specific orders later.
+*   **Impact**: Operational inefficiency during reconciliation.
+
+### 2. Manual Distribution Step
+The flow ends at "Copy Link." Forcing a manual paste into WhatsApp adds friction.
+*   **Impact**: Slower "Time-to-Collection."
+
+### 3. Repetitive Custom Input
+Merchants selling the same high-frequency items must type Name and Price manually every time.
+*   **Impact**: High friction for semi-standardized sellers.
+
+### 4. No Running Total Visibility
+During multi-product creation, the merchant doesn't see a clear sum of the invoice until it's finalized.
+*   **Impact**: Potential for calculation errors.
+
+### 5. Lack of Actionable Status
+Without a "Paid" status in the list, the "Salin link" button remains the only action, even if the link is no longer needed.
+*   **Impact**: Dashboard clutter.
 
 ---
 
-*Note: This document serves as a placeholder for a deep-dive analysis once UI screenshots of the Invoice flow are provided.*
+## 5. Strategic Recommendations
+
+1.  **Status & Auto-Reconciliation**: Integrate real-time payment status (Pending, Paid, Expired) with color-coded badges.
+2.  **Direct WhatsApp Integration**: Add a dedicated "Share to WhatsApp" button with a customizable message template.
+3.  **Auto-Order Naming**: If left blank, the system should auto-fill with "Order #[ID]" or shopper name.
+4.  **Soft-Inventory Lock**: Link invoices to inventory to "reserve" items for a set duration (e.g., 2 hours) once the link is created.
+
+---
+
+## 6. Visual Reference
+
+| Step 1: Dashboard | Step 2: Custom Product | Step 3: Distribution |
+| :---: | :---: | :---: |
+| ![Dashboard](./images/invoice/1.png) | ![Product](./images/invoice/3.png) | ![Copy Link](./images/invoice/5.png) |
+
+---
+
+## 7. Industry Benchmarks
+*   **Stripe Payment Links**: Sets the standard for "no-code" payment collection with built-in tax and address collection.
+*   **Xendit (Local)**: Provides advanced analytics on link clicks vs. conversion rates.
+*   **Shopify Draft Orders**: Excels at converting a paid invoice directly into a fulfillment/shipping task.
