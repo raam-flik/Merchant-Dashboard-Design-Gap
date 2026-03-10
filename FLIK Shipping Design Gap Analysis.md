@@ -1,4 +1,4 @@
-# FLIK Shipping: Merchant Dashboard Design Gap Analysis
+# FLIK Shipping Design Gap Analysis
 
 **Author:** VP of Product (AI Persona)  
 **Target Audience:** Engineering, Product, and Design Teams  
