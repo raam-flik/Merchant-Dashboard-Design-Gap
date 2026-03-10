@@ -57,7 +57,7 @@ Splitting pickup selection into two distinct click actions.
 1.  **Smart Address Parser**: Allow merchants to paste raw text from WhatsApp/Instagram.
 2.  **Courier Success Rates**: Show "Success %" alongside price to help merchants avoid unreliable couriers.
 3.  **Bulk "One-Click" Approve**: Allow bulk approval of shipments using "Cheapest" or "Favorite" couriers.
-4.  **Dynamic Saldo Top-up**: While a top-up popup exists, moving toward a "Pay-as-you-go" credit card/E-wallet linkage would eliminate the "Saldo" step entirely.
+4.  **Package Dimension Presets**: Create a library of saved package sizes to eliminate manual dimension entry (the #2 friction point).
 
 ---
 
